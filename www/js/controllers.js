@@ -2,43 +2,13 @@ angular.module('pickup.controllers', [])
 
 .controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  // ROOT OF APP
+  // Add background tasks
+  // Define global functions here
+  // Defined $rootScope functions are accessible in all controllers via $scope.functionName
+  // 
 
-  // Form data for the login modal
-  //$scope.loginData = {};
-
-  // Create the login modal that we will use later
-  // $ionicModal.fromTemplateUrl('templates/login.html', {
-  //   scope: $scope
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  // });
-
-  // Triggered in the login modal to close it
-  // $scope.closeLogin = function() {
-  //   $scope.modal.hide();
-  // };
-
-  // Open the login modal
-  // $scope.login = function() {
-  //   $scope.modal.show();
-  // };
-
-  // Perform the login action when the user submits the login form
-  // $scope.doLogin = function() {
-  //   console.log('Doing login', $scope.loginData);
-
-  //   // Simulate a login delay. Remove this and replace with your login
-  //   // code if using a login system
-  //   $timeout(function() {
-  //     $scope.closeLogin();
-  //   }, 1000);
-  // };
+  // Function to check for empty objects
   $rootScope.isEmpty = function isEmpty(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
@@ -47,14 +17,22 @@ angular.module('pickup.controllers', [])
 
     return true;
   }
+
+  // Generated code that might be useful:
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
 })
 
-// HOME
+// HOME CONTROLLER
 .controller('HomeCtrl', ['$scope', function($scope){
   
 }])
 
-// REGISTER
+// REGISTER CONTROLLER
 .controller('RegisterCtrl', ['$scope', 'RegisterService', '$state', '$ionicHistory', function($scope, RegisterService, $state, $ionicHistory) {
   
   $scope.user = {};
@@ -94,7 +72,7 @@ angular.module('pickup.controllers', [])
       "password": $scope.user.password
     };
 
-    // Add new user to server
+    // Add new user to server (commented out for development)
     // RegisterService.register(newUser).then(function(response){
     //   //console.log(JSON.stringify(response));
     //   if(response.data.data.userCreated){
@@ -110,7 +88,7 @@ angular.module('pickup.controllers', [])
   
 }])
 
-// LOGIN
+// LOGIN CONTROLLER
 .controller('LoginCtrl', ['$scope', function($scope){
 
   $scope.errors = { email: 'ERROR', username: null, password: null };
@@ -119,6 +97,6 @@ angular.module('pickup.controllers', [])
 }])
 
 
-// MY GAMES
+// MY GAMES CONTROLLER
 .controller('MyGamesCtrl', ['$scope', function($scope, $stateParams) {
 }])
