@@ -5,6 +5,10 @@
     {
       "path": "/signup",
       "proxyUrl": "http://pickupapp.herokuapp.com/services/account/signup"
+    },
+    {
+      "path": "/emailexist",
+      "proxyUrl": "http://pickupapp.herokuapp.com/services/account/emailexist"
     }
   ]
 }
