@@ -10,5 +10,13 @@
       "path": "/emailexist",
       "proxyUrl": "http://pickupapp.herokuapp.com/services/account/emailexist"
     }
+  ],
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
   ]
 }

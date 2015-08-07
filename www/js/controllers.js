@@ -39,7 +39,7 @@ angular.module('pickup.controllers', [])
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
-  //Cleanup the modal when we're done with it!
+  // Cleanup the modal when we're done with it
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
@@ -95,7 +95,7 @@ angular.module('pickup.controllers', [])
     RegisterService.userExists({"email":$scope.user.email}).then(function(response){
       //console.log(JSON.stringify(response));
       if(response.data.data.exists){
-          $scope.errors.email = $scope.user.email + " already registered!";
+          $scope.errors.email = " Email already in use!";
       }
       else {
           // If no errors, register user
@@ -103,10 +103,11 @@ angular.module('pickup.controllers', [])
             registerUser();
           }
       }
-      $scope.hideLoading();
+    },function(){
+      $scope.errors.email = "Error checking email. Try again shortly.";
     });  
 
-    
+    $scope.hideLoading();
   }
 
   // Register New User 
@@ -120,27 +121,28 @@ angular.module('pickup.controllers', [])
     };
 
     // Add new user to server (commented out for development)
-    // RegisterService.register(newUser).then(function(response){
-    //   //console.log(JSON.stringify(response));
-    //   if(response.data.data.userCreated){
+    RegisterService.register(newUser).then(function(response){
+      //console.log(JSON.stringify(response));
+      if(response.data.data.userCreated){
         $ionicHistory.nextViewOptions({
           disableBack: true
         });
         //Redirect to Home after user is added
         $state.go('app.home');
-    //   }
-    // });
-
+      }
+    },function(){
+      $scope.errors.email = "Can't seem to register you right now. Try again shortly.";
+    });  
+    
+    $scope.hideLoading();
   }
-
-  
   
 }])
 
 // LOGIN CONTROLLER
 .controller('LoginCtrl', ['$scope', function($scope){
 
-  $scope.errors = { email: 'ERROR', username: null, password: null };
+  
 
 
 }])
