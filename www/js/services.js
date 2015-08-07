@@ -11,7 +11,7 @@ angular.module('pickup.services', [])
         var apiUrl = 'http://pickupapp.herokuapp.com';
         
         deferred.resolve(
-          $http.post('/signup', JSON.stringify(json))
+          $http.post(url, JSON.stringify(json))
           .success(function (data, status, headers, config) {
               console.log(JSON.stringify(data));
           })
@@ -19,8 +19,8 @@ angular.module('pickup.services', [])
               console.log(JSON.stringify(data));
           })
         );
-        //console.log(JSON.stringify(deferred));
-        return deferred.promise;
+
+        return deferred.promise; 
       }
     };
 
@@ -32,7 +32,10 @@ angular.module('pickup.services', [])
 	
 	var RegisterService = {
       register: function(newUser) {
-        return HttpService.post('/services/account/signup', newUser);
+        return HttpService.post('/signup', newUser);
+      },
+      userExists: function(userEmail) {
+        return HttpService.post('/emailexist', userEmail);
       },
     };
 

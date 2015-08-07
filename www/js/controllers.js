@@ -1,15 +1,13 @@
 angular.module('pickup.controllers', [])
 
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout) {
-
-  // ROOT OF APP
-  // Add background tasks
-  // Define global functions here
-  // Defined $rootScope functions are accessible in all controllers via $scope.functionName
-  // 
+// ROOT OF APP
+// Add background tasks
+// Define global functions here
+// Defined $rootScope functions are accessible in all controllers via $scope.functionName
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $ionicLoading) {
 
   // Function to check for empty objects
-  $rootScope.isEmpty = function isEmpty(obj) {
+  $rootScope.isEmpty = function(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
             return false;
@@ -18,7 +16,43 @@ angular.module('pickup.controllers', [])
     return true;
   }
 
-  // Generated code that might be useful:
+  // Ionic loading spinner
+  $scope.showLoading = function() {
+    $ionicLoading.show({
+      template: '<ion-spinner icon="spiral"></ion-spinner>'
+    });
+  };
+  $scope.hideLoading = function(){
+    $ionicLoading.hide();
+  };
+
+  // Modal pop-up
+  $ionicModal.fromTemplateUrl('loading_modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+
+  // Generated code that might be useful later:
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -38,7 +72,8 @@ angular.module('pickup.controllers', [])
   $scope.user = {};
   
   // Form Submit with Validation 
-  $scope.submit = function submit(){
+  $scope.submit = function(){
+    $scope.showLoading();
     $scope.errors = {};
     if (!$scope.user.email) {
       //$scope.errors.email = "Invalid email!";
@@ -56,16 +91,28 @@ angular.module('pickup.controllers', [])
       $scope.errors.empty = "Fields cannot be empty!";
     }
 
-    if($scope.isEmpty($scope.errors)){
-      registerUser();
-    }
+    // Check user exists
+    RegisterService.userExists({"email":$scope.user.email}).then(function(response){
+      //console.log(JSON.stringify(response));
+      if(response.data.data.exists){
+          $scope.errors.email = $scope.user.email + " already registered!";
+      }
+      else {
+          // If no errors, register user
+          if($scope.isEmpty($scope.errors)){
+            registerUser();
+          }
+      }
+      $scope.hideLoading();
+    });  
 
+    
   }
 
   // Register New User 
   function registerUser() {
     
-    // New user info
+    // New user obj
     var newUser = {
       "email": $scope.user.email,
       "username": $scope.user.username,
@@ -85,6 +132,8 @@ angular.module('pickup.controllers', [])
     // });
 
   }
+
+  
   
 }])
 
