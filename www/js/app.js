@@ -1,7 +1,9 @@
 angular.module('pickup', ['ionic', 
                           'pickup.controllers',
                           'pickup.services',
-                          'ngCordova'])
+                          'ngCordova',
+                          'uiGmapgoogle-maps'
+                          ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -19,6 +21,14 @@ angular.module('pickup', ['ionic',
   });
 })
 
+.config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization,places'
+    });
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -29,6 +39,7 @@ angular.module('pickup', ['ionic',
     controller: 'AppCtrl'
   })
 
+  // Home
   .state('app.home', {
     url: '/home',
     views: {
@@ -39,6 +50,18 @@ angular.module('pickup', ['ionic',
     }
   })
 
+  // Home Tabs
+  .state('app.home.map', {
+      url: "/map",
+      views: {
+        'map-tab': {
+          templateUrl: "templates/map.html",
+          controller: 'MapCtrl'
+        }
+      }
+    })
+  
+  // Register
   .state('app.register', {
     url: '/register',
     views: {
@@ -49,6 +72,7 @@ angular.module('pickup', ['ionic',
     }
   })
 
+  // Login
   .state('app.login', {
     url: '/login',
     views: {
@@ -59,7 +83,8 @@ angular.module('pickup', ['ionic',
     }
   })
 
-  .state('app.mygames', {
+  // My Games
+  .state('app.myGames', {
     url: '/mygames',
     views: {
       'menuContent': {

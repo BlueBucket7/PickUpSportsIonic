@@ -4,7 +4,11 @@ angular.module('pickup.controllers', [])
 // Add background tasks
 // Define global functions here
 // Defined $rootScope functions are accessible in all controllers via $scope.functionName
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $ionicLoading) {
+.controller('AppCtrl', function($rootScope, 
+                                $scope, 
+                                $ionicModal, 
+                                $timeout, 
+                                $ionicLoading) {
 
   // Function to check for empty objects
   $rootScope.isEmpty = function(obj) {
@@ -43,14 +47,7 @@ angular.module('pickup.controllers', [])
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
+
 
   // Generated code that might be useful later:
   // With the new view caching in Ionic, Controllers are only called
@@ -122,18 +119,18 @@ angular.module('pickup.controllers', [])
 
     // Add new user to server (commented out for development)
     RegisterService.register(newUser).then(function(response){
-      //console.log(JSON.stringify(response));
+      // console.log(JSON.stringify(response));
       if(response.data.data.userCreated){
         $ionicHistory.nextViewOptions({
           disableBack: true
         });
-        //Redirect to Home after user is added
+        // Redirect to Home after user is added
         $state.go('app.home');
       }
     },function(){
       $scope.errors.email = "Can't seem to register you right now. Try again shortly.";
     });  
-    
+
     $scope.hideLoading();
   }
   
@@ -142,11 +139,53 @@ angular.module('pickup.controllers', [])
 // LOGIN CONTROLLER
 .controller('LoginCtrl', ['$scope', function($scope){
 
-  
-
 
 }])
 
+// MAP CONTROLLER
+.controller('MapCtrl', ['$scope', '$cordovaGeolocation', 'uiGmapGoogleMapApi', function($scope, $cordovaGeolocation, uiGmapGoogleMapApi) {
+
+  var options = {timeout: 10000, enableHighAccuracy: true};
+  $scope.marker;
+  $scope.map;
+  $scope.gameMarkers = [];
+  
+  // Mock Game Objects
+  var games = [
+                {id:1,}
+
+              ];
+ 
+  ionic.Platform.ready(function(){
+
+    $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+   
+      var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+   
+      var mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      
+      $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 15 };
+      
+      uiGmapGoogleMapApi.then(function(maps) {
+        
+        //$scope.gameMarkers['id'] = 1;
+        $scope.gameMarkers.push({ id: 1,latitude: position.coords.latitude, longitude: position.coords.longitude });
+
+      });
+      //$scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      // Add marker
+    
+    }, function(error){
+      console.log("Could not get location");
+    });
+
+  });
+
+}])
 
 // MY GAMES CONTROLLER
 .controller('MyGamesCtrl', ['$scope', function($scope, $stateParams) {

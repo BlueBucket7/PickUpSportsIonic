@@ -7697,3 +7697,9 @@ span.form-error.ng-binding {
   color: #ff0000;
   font-style: italic;
   font-size: .8em; }
+
+.scroll {
+  height: 100%; }
+
+.angular-google-map-container, .angular-google-map {
+  height: 100%; }
