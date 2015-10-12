@@ -1,0 +1,20 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <h1>Home</h1>
+  </ion-content>
+  <ion-tabs class="tabs-icon-top tabs-positive">
+
+      <ion-tab title="Home" icon="ion-home" ui-sref="app.home">
+        <ion-nav-view name="home-tab"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Map" icon="ion-map" ui-sref="app.home.map">
+        <ion-nav-view name="map-tab"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Create Game" icon="ion-plus" ui-sref="app.create">
+        <ion-nav-view name="create-tab"></ion-nav-view>
+      </ion-tab>
+
+	</ion-tabs>
+</ion-view>

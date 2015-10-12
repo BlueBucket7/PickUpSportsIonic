@@ -35,7 +35,7 @@ angular.module('pickup', ['ionic',
   .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'menu/menu.html',
     controller: 'AppCtrl'
   })
 
@@ -44,7 +44,7 @@ angular.module('pickup', ['ionic',
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html',
+        templateUrl: 'home/home.html',
         controller: 'HomeCtrl'
       }
     }
@@ -55,7 +55,7 @@ angular.module('pickup', ['ionic',
       url: "/map",
       views: {
         'map-tab': {
-          templateUrl: "templates/map.html",
+          templateUrl: "map/map.html",
           controller: 'MapCtrl'
         }
       }
@@ -66,7 +66,7 @@ angular.module('pickup', ['ionic',
     url: '/register',
     views: {
       'menuContent': {
-        templateUrl: 'templates/register.html',
+        templateUrl: 'register/register.html',
         controller: 'RegisterCtrl'
       }
     }
@@ -77,7 +77,7 @@ angular.module('pickup', ['ionic',
     url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login.html',
+        templateUrl: 'login/login.html',
         controller: 'LoginCtrl'
       }
     }
@@ -88,7 +88,7 @@ angular.module('pickup', ['ionic',
     url: '/mygames',
     views: {
       'menuContent': {
-        templateUrl: 'templates/my_games.html',
+        templateUrl: 'games/my_games.html',
         controller: 'MyGamesCtrl'
       }
     }
@@ -98,11 +98,11 @@ angular.module('pickup', ['ionic',
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
+        templateUrl: 'playlist/playlist.html',
         controller: 'PlaylistCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/register');
+  $urlRouterProvider.otherwise('app/register');
 });
