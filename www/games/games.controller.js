@@ -2,6 +2,6 @@
 
 angular.module('pickup.games.controller', [])
 
-.controller('GamesCtrl', ['$scope', function($scope, $stateParams) {
+.controller('GamesCtrl', ['$scope', 'RegisterService', '$state', '$ionicHistory', function($scope, $stateParams, RegisterService, $state, $ionicHistory) {
   
 }])

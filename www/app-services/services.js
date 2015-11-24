@@ -41,3 +41,17 @@ angular.module('pickup.services', [])
 
     return RegisterService;
 }])
+
+.factory('CreateGameService', ['$q', 'HttpService', function($q, HttpService){
+  
+  var CreateGameService = {
+      create: function(newUser) {
+        return HttpService.post('/signup', newUser);
+      },
+      // userExists: function(userEmail) {
+      //   return HttpService.post('/emailexist', userEmail);
+      // },
+    };
+
+    return RegisterService;
+}])

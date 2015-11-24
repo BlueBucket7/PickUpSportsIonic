@@ -1,0 +1,21 @@
+<ion-view view-title="Create a game">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Game" ng-model="user.games">
+            </label>
+            <!-- <label class="item item-input" ng-if="errors.email">
+                <span class="form-error">{{errors.email}}</span>
+            </label> -->
+            <label class="item item-input">
+                <input type="text" placeholder="Location" ng-model="user.location">
+            </label>
+            <!-- <label class="item item-input" ng-if="errors.username">
+                <span class="form-error">{{errors.username}}</span>
+            </label> -->
+            <label class="item">
+                <button class="button button-block button-positive" ng-click="submit()">Create</button>
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

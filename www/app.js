@@ -88,6 +88,17 @@ angular.module('pickup', ['ionic',
         }
     })
 
+    // Create a new game
+    .state('app.newGame', {
+        url: '/newgame',
+        views: {
+            'menuContent': {
+                templateUrl: 'games/new_game.html',
+                controller: 'GamesCtrl'
+            }
+        }
+    })
+
     // My Games
     .state('app.myGames', {
         url: '/games',
