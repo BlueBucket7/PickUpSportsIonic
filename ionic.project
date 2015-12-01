@@ -7,6 +7,10 @@
       "proxyUrl": "http://pickupapp.herokuapp.com/services/account/signup"
     },
     {
+      "path": "/create",
+      "proxyUrl": "http://pickupapp.herokuapp.com/API/REST/1.0/location/games/create"
+    },
+    {
       "path": "/emailexist",
       "proxyUrl": "http://pickupapp.herokuapp.com/services/account/emailexist"
     }
