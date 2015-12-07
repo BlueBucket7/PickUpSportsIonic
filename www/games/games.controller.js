@@ -39,11 +39,9 @@ angular.module('pickup.games.controller', [])
                     createGame();
                 }
             }
-        }, 
-        // function() {
-        //     $scope.errors.email = "Error checking email. Try again shortly.";
-        // })
-        ;
+        }, function() {
+            $scope.errors.email = "Error checking email. Try again shortly.";
+        });
 
         $scope.hideLoading();
     }
