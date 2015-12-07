@@ -45,13 +45,13 @@ angular.module('pickup.services', [])
 .factory('CreateGameService', ['$q', 'HttpService', function($q, HttpService){
   
   var CreateGameService = {
-      create: function(newUser) {
-        return HttpService.post('/signup', newUser);
+      create: function(newGame) {
+        return HttpService.post('/creategame', newGame);
       },
-      // userExists: function(userEmail) {
-      //   return HttpService.post('/emailexist', userEmail);
-      // },
+      gameExists: function(game) {
+        return HttpService.post('/gameexist', game);
+      },
     };
 
-    return RegisterService;
+    return CreateGameService;
 }])

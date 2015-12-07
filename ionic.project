@@ -8,7 +8,7 @@
     },
     {
       "path": "/create",
-      "proxyUrl": "http://pickupapp.herokuapp.com/API/REST/1.0/location/games/create"
+      "proxyUrl": "http://pickupapp.herokuapp.com/API/REST/1.0/location/games/creategame"
     },
     {
       "path": "/emailexist",
