@@ -1,0 +1,31 @@
+<ion-view view-title="Game Lobby">
+  <ion-content>
+      <h2 class="game-title">Basketball</h2>
+      <div class="card">
+        <!-- <div class="item item-text-wrap"> -->
+        <div class="row">
+          <div class="col">{{mockGame.players}} <i class="icon ion-ios-person"></i></div>
+        </div>       
+        <!-- </div>   -->
+      </div>
+  
+
+      <!-- Map / Location -->
+      <div class="card">
+        <div class="item map-container">
+          <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                  <ui-gmap-markers
+                    models='gameMarkers'
+                    coords="'self'"
+                    >
+              </ui-gmap-markers>
+          </ui-gmap-google-map>
+        </div>
+      </div>    
+  
+
+      <!-- <div>
+        <pre>{{error}}</pre>
+      </div> -->
+  </ion-content>
+</ion-view>
