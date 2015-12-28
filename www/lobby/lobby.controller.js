@@ -4,7 +4,11 @@ angular.module('pickup.lobby.controller', [])
 .controller('LobbyCtrl', ['$scope', '$state', '$ionicHistory', 'uiGmapGoogleMapApi', function($scope, $state, $ionicHistory, uiGmapGoogleMapApi) {
 
     //$scope.user = {};
+    $scope.chatMessages = [{name:'Shikai', msg:'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}, 
+                            {name:'Boyuan', msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'},
+                            {name:'Kevin', msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'}];
     $scope.gameMarkers = [];
+    $scope.showInfo = true;
     $scope.mockGame = {
         sport: 'Basketball',
         players: 8,
@@ -29,5 +33,14 @@ angular.module('pickup.lobby.controller', [])
                 });
     });
     
+    $scope.toggleInfo = function() {
+      if ($scope.showInfo) {
+        $scope.showInfo = false;
+      }
+      else {
+        $scope.showInfo = true;
+      }
+    };
+
 
 }]);

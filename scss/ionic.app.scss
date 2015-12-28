@@ -38,6 +38,46 @@ span.form-error.ng-binding  {
 }
 
 // LOBBY
-.map-container .angular-google-map-container  {
-	height:150px;
+#lobby-header {
+	.icon.ion-ios-person:before {
+		line-height:27px !important;
+	}
 }
+.lobby-content {
+	.card{
+		margin-top:0px;
+		padding:0;
+		margin:0;
+
+		h4 {
+			margin-bottom:0px;
+		}
+
+		.address{
+			font-size:0.7em;
+		}
+	}
+
+	.button.collapse-btn {
+		max-height:20px;
+		min-height:10px;
+		margin:0;
+	}
+
+	.button .icon:before, .button .icon:before, .button .icon-left:before, .button .icon-right:before {
+	    line-height: 15px;
+	}
+
+	.icon.ion-ios-person:before {
+		line-height:27px !important;
+	}
+
+
+	.map-container {
+		padding:0;
+		.angular-google-map-container  {
+			height:100px;
+		}
+	}
+}
+
