@@ -4,9 +4,12 @@ angular.module('pickup.lobby.controller', [])
 .controller('LobbyCtrl', ['$scope', '$state', '$ionicHistory', 'uiGmapGoogleMapApi', function($scope, $state, $ionicHistory, uiGmapGoogleMapApi) {
 
     //$scope.user = {};
-    $scope.chatMessages = [{name:'Shikai', msg:'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}, 
-                            {name:'Boyuan', msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'},
-                            {name:'Kevin', msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'}];
+    $scope.chatMessages = [{name:'Shikai', msg:'Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscingLorem ipsum dolor sit amet, consectetur adipiscingLorem ipsum dolor sit amet, consectetur adipiscing'}, 
+                            {name:'Boyuan', msg: 'Lorem ipsum dolor sit amet'},
+                            {name:'Kevin', msg: 'Lorem ipsum dolor sit amet, consectetur '},
+                            {name:'Shikai', msg:'Lorem ipsum dolor sit amet, consectetur adipiscing'}, 
+                            {name:'Boyuan', msg: 'Lorem ipsum dolor sit amet'},
+                            {name:'Kevin', msg: 'Lorem ipsum dolor sit amet, consectetur '}];
     $scope.gameMarkers = [];
     $scope.showInfo = true;
     $scope.mockGame = {
