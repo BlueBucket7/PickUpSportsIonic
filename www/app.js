@@ -3,6 +3,7 @@ angular.module('pickup', ['ionic',
     'pickup.register.controller',
     'pickup.home.controller',
     'pickup.login.controller',
+    'pickup.lobby.controller',
     'pickup.map.controller',
     'pickup.games.controller',
     'pickup.services',
@@ -116,6 +117,17 @@ angular.module('pickup', ['ionic',
             'menuContent': {
                 templateUrl: 'playlist/playlist.html',
                 controller: 'PlaylistCtrl'
+            }
+        }
+    })
+
+    //Lobby 
+    .state('app.lobby', {
+        url: '/lobby/:lobbyId',
+        views: {
+            'menuContent': {
+                templateUrl: 'lobby/lobby.html',
+                controller: 'LobbyCtrl'
             }
         }
     });

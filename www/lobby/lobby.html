@@ -1,0 +1,57 @@
+<ion-view view-title="Game Lobby">
+<ion-header-bar id="lobby-header" class="bar-subheader row">
+  <h2 class="game-title col-50">Basketball</h2>
+  <div class="button-bar bar-light col-50">
+    <!-- <a class="button">Competitive</a> -->
+    <a class="button"><i class="icon ion-ios-person"></i> <span class="num-players">{{mockGame.players}}/10</span> </a>
+    <a class="button">12:00PM</a>
+    <!-- <a class="button">Third</a> -->
+  </div>
+</ion-header-bar>
+  <ion-content class="lobby-content has-subheader">
+      
+      <!--<div class="card">
+         <div class="item item-text-wrap"> 
+        <div class="row">
+          <div class="col">{{mockGame.players}}<i class="icon ion-ios-person"></i></div>
+        </div>       
+        </div>   
+      </div>-->
+      <div class="game-info" ng-show="showInfo">
+        <div class="game-descripton padding"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+
+        <!-- Map / Location -->
+        <div class="card">
+          <h4>Sportsplex Stadium</h4>
+          <p class="address">1347 Woodroffe Ave, Ottawa, Ontario</p>
+          <div class="item map-container">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                    <ui-gmap-markers
+                      models='gameMarkers'
+                      coords="'self'"
+                      >
+                </ui-gmap-markers>
+            </ui-gmap-google-map>
+          </div>
+        </div>  
+      </div> 
+
+      <button class="button button-full button-light collapse-btn" ng-click="toggleInfo()">
+        <i class="icon ion-ios-drag" ></i>
+      </button>
+
+      <!-- CHAT -->
+      <!-- <h4>Lobby</h4> -->
+      <div class="list chat-container">
+        <a class="item item-avatar item-text-wrap" ng-repeat='person in chatMessages'>
+          <img src="">
+          <h2>{{person.name}}</h2>
+          <p>{{person.msg}}</p>
+        </a>
+      </div>
+
+      <!-- <div>
+        <pre>{{error}}</pre>
+      </div> -->
+  </ion-content>
+</ion-view>
